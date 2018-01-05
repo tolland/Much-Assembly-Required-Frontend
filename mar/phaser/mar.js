@@ -234,8 +234,12 @@ function Word(terrain) {
 
                 //Object is new
                 var newObj = createGameObject(response[i]);
-                newObj.updated = true;
-                self.objects.push(newObj);
+
+                //Allow the object id to not exist
+                if (newObj) {
+                    newObj.updated = true;
+                    self.objects.push(newObj);
+                }
             }
         }
 
