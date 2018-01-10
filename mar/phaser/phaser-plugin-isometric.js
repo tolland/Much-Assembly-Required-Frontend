@@ -1,29 +1,29 @@
 /**
- * The MIT License (MIT)
+* The MIT License (MIT)
 
- * Copyright (c) 2015 Lewis Lane
+* Copyright (c) 2015 Lewis Lane
 
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- *
- *
- */
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*
+* 
+*
+*/
 
 /**
  * @author       Lewis Lane <lew@rotates.org>
@@ -33,12 +33,12 @@
 
 /**
  * @class Phaser.Plugin.Isometric
- *
+ * 
  * @classdesc
  * Isometric is a comprehensive axonometric plugin for Phaser which provides an API for handling axonometric projection of assets in 3D space to the screen.
  * The goal has been to mimic as closely as possible the existing APIs provided by Phaser for standard orthogonal 2D projection, but add a third dimension.
  * Also included is an Arcade-based 3D AABB physics engine, which again is closely equivalent in functionality and its API.
- *
+ * 
  * @constructor
  * @param {Phaser.Game} game The current game instance.
  * @param {number} isometricType - the isometric projection angle to use.
@@ -69,7 +69,7 @@ Phaser.Plugin.Isometric.BACKWARDY = 5;
 //  Type consts
 Phaser.Plugin.Isometric.ISOSPRITE = 'isosprite';
 Phaser.Plugin.Isometric.ISOARCADE = 'isoarcade';
-/**
+;/**
  * @class Phaser.Plugin.Isometric.Cube
  *
  * @classdesc
@@ -210,13 +210,13 @@ Phaser.Plugin.Isometric.Cube.prototype = {
     },
 
     /**
-     * Determines whether the specified coordinates are contained within the region defined by this Cube object.
-     * @method Phaser.Plugin.Isometric.Cube#contains
-     * @param {number} x - The x coordinate of the point to test.
-     * @param {number} y - The y coordinate of the point to test.
-     * @param {number} y - The z coordinate of the point to test.
-     * @return {boolean} A value of true if the Cube object contains the specified point; otherwise false.
-     */
+    * Determines whether the specified coordinates are contained within the region defined by this Cube object.
+    * @method Phaser.Plugin.Isometric.Cube#contains
+    * @param {number} x - The x coordinate of the point to test.
+    * @param {number} y - The y coordinate of the point to test.
+    * @param {number} y - The z coordinate of the point to test.
+    * @return {boolean} A value of true if the Cube object contains the specified point; otherwise false.
+    */
     contains: function (x, y, z) {
 
         return Phaser.Plugin.Isometric.Cube.contains(this, x, y, z);
@@ -224,12 +224,12 @@ Phaser.Plugin.Isometric.Cube.prototype = {
     },
 
     /**
-     * Determines whether the specified X and Y coordinates are contained within the region defined by this Cube object.
-     * @method Phaser.Plugin.Isometric.Cube#containsXY
-     * @param {number} x - The x coordinate of the point to test.
-     * @param {number} y - The y coordinate of the point to test.
-     * @return {boolean} A value of true if this Cube object contains the specified point; otherwise false.
-     */
+    * Determines whether the specified X and Y coordinates are contained within the region defined by this Cube object.
+    * @method Phaser.Plugin.Isometric.Cube#containsXY
+    * @param {number} x - The x coordinate of the point to test.
+    * @param {number} y - The y coordinate of the point to test.
+    * @return {boolean} A value of true if this Cube object contains the specified point; otherwise false.
+    */
     containsXY: function (x, y) {
 
         return Phaser.Plugin.Isometric.Cube.containsXY(this, x, y);
@@ -703,22 +703,22 @@ Phaser.Plugin.Isometric.Cube.intersects = function (a, b) {
     return !(a.frontX < b.x || a.frontY < b.y || a.x > b.frontX || a.y > b.frontY || a.z > b.top || a.top < b.z);
 };
 ;/**
- * @class Phaser.Plugin.Isometric.IsoSprite
- *
- * @classdesc
- * Create a new `IsoSprite` object. IsoSprites are extended versions of standard Sprites that are suitable for axonometric positioning.
- *
- * IsoSprites are simply Sprites that have three new position properties (isoX, isoY and isoZ) and ask the instance of Phaser.Plugin.Isometric.Projector what their position should be in a 2D scene whenever these properties are changed.
- * The IsoSprites retain their 2D position property to prevent any problems and allow you to interact with them as you would a normal Sprite. The upside of this simplicity is that things should behave predictably for those already used to Phaser.
- *
- * @constructor
- * @extends Phaser.Sprite
- * @param {Phaser.Game} game - A reference to the currently running game.
- * @param {number} x - The x coordinate (in 3D space) to position the IsoSprite at.
- * @param {number} y - The y coordinate (in 3D space) to position the IsoSprite at.
- * @param {number} z - The z coordinate (in 3D space) to position the IsoSprite at.
- * @param {string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture} key - This is the image or texture used by the IsoSprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
- * @param {string|number} frame - If this IsoSprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
+* @class Phaser.Plugin.Isometric.IsoSprite
+*
+* @classdesc
+* Create a new `IsoSprite` object. IsoSprites are extended versions of standard Sprites that are suitable for axonometric positioning.
+*
+* IsoSprites are simply Sprites that have three new position properties (isoX, isoY and isoZ) and ask the instance of Phaser.Plugin.Isometric.Projector what their position should be in a 2D scene whenever these properties are changed.
+* The IsoSprites retain their 2D position property to prevent any problems and allow you to interact with them as you would a normal Sprite. The upside of this simplicity is that things should behave predictably for those already used to Phaser.
+*
+* @constructor
+* @extends Phaser.Sprite
+* @param {Phaser.Game} game - A reference to the currently running game.
+* @param {number} x - The x coordinate (in 3D space) to position the IsoSprite at.
+* @param {number} y - The y coordinate (in 3D space) to position the IsoSprite at.
+* @param {number} z - The z coordinate (in 3D space) to position the IsoSprite at.
+* @param {string|Phaser.RenderTexture|Phaser.BitmapData|PIXI.Texture} key - This is the image or texture used by the IsoSprite during rendering. It can be a string which is a reference to the Cache entry, or an instance of a RenderTexture or PIXI.Texture.
+* @param {string|number} frame - If this IsoSprite is using part of a sprite sheet or texture atlas you can specify the exact frame to use by giving a string or numeric index.
  */
 Phaser.Plugin.Isometric.IsoSprite = function (game, x, y, z, key, frame) {
 
@@ -845,7 +845,7 @@ Object.defineProperty(Phaser.Plugin.Isometric.IsoSprite.prototype, "isoX", {
     set: function (value) {
         this._isoPosition.x = value;
         this._depthChanged = this._isoPositionChanged = this._isoBoundsChanged = true;
-        if (this.body) {
+        if (this.body){
             this.body._reset = true;
         }
     }
@@ -864,7 +864,7 @@ Object.defineProperty(Phaser.Plugin.Isometric.IsoSprite.prototype, "isoY", {
     set: function (value) {
         this._isoPosition.y = value;
         this._depthChanged = this._isoPositionChanged = this._isoBoundsChanged = true;
-        if (this.body) {
+        if (this.body){
             this.body._reset = true;
         }
     }
@@ -883,7 +883,7 @@ Object.defineProperty(Phaser.Plugin.Isometric.IsoSprite.prototype, "isoZ", {
     set: function (value) {
         this._isoPosition.z = value;
         this._depthChanged = this._isoPositionChanged = this._isoBoundsChanged = true;
-        if (this.body) {
+        if (this.body){
             this.body._reset = true;
         }
     }
@@ -982,6 +982,7 @@ Phaser.Plugin.Isometric.prototype.addIsoSprite = function (x, y, z, key, frame, 
 };
 
 
+
 Phaser.Utils.Debug.prototype.isoSprite = function (sprite, color, filled) {
 
     if (!sprite.isoBounds) {
@@ -1062,7 +1063,7 @@ Phaser.Utils.Debug.prototype.isoSprite = function (sprite, color, filled) {
  * @class Phaser.Plugin.Isometric.Octree
  * @classdesc A Octree implementation based on Phaser.QuadTree.
  * Original version at https://github.com/timohausmann/quadtree-js/
- *
+ * 
  * @constructor
  * @param {number} x - The bottom-back coordinate of the octree.
  * @param {number} y - The bottom-back coordinate of the octree.
@@ -1453,13 +1454,13 @@ Phaser.Utils.Debug.prototype.octree = function (octree, color) {
 };
 ;/**
  * @class Phaser.Plugin.Isometric.Point3
- *
+ * 
  * @classdesc
  * The Point3 object represents a location in a three-dimensional coordinate system,
  * where x and y represent the horizontal axes and z represents the vertical axis.
  * The following code creates a point at (0,0,0):
  * `var myPoint = new Phaser.Plugin.Isometric.Point3();`
- *
+ * 
  * Creates a new Point3 object. If you pass no parameters a Point3 is created set to (0, 0, 0).
  *
  * @constructor
@@ -1577,10 +1578,12 @@ Phaser.Plugin.Isometric.Point3.prototype = {
      * @param {number} z - The value to add to Point3.z.
      * @return {Phaser.Plugin.Isometric.Point3} This Point3 object. Useful for chaining method calls.
      */
-    add: function (x, y) {
+    add: function (x, y, z) {
 
         this.x += x || 0;
         this.y += y || 0;
+        this.z += z || 0;
+
         return this;
 
     },
@@ -1876,7 +1879,7 @@ Phaser.Plugin.Isometric.Projector.prototype = {
      * @method Phaser.Plugin.Isometric.Projector#simpleSort
      * @param {Phaser.Group} group - A group of IsoSprites to sort.
      */
-    simpleSort: function (group) {
+    simpleSort: function(group) {
         group.sort("depth");
     },
 
@@ -2454,7 +2457,7 @@ Phaser.Plugin.Isometric.Body.prototype = {
 
         this.blocked.up = false;
         this.blocked.down = false;
-        this.blocked.backX = false;
+        this.blocked.frontY = false;
         this.blocked.frontX = false;
         this.blocked.backY = false;
         this.blocked.backX = false;
@@ -2500,7 +2503,7 @@ Phaser.Plugin.Isometric.Body.prototype = {
                 this.checkWorldBounds();
             }
 
-            if (this.sprite.outOfBoundsKill && !this.game.physics.isoArcade.bounds.intersects(this.sprite.isoBounds)) {
+            if (this.sprite.outOfBoundsKill && !this.game.physics.isoArcade.bounds.intersects(this.sprite.isoBounds)){
                 this.sprite.kill();
             }
         }
@@ -2539,13 +2542,13 @@ Phaser.Plugin.Isometric.Body.prototype = {
             this.prev.z = this.position.z;
         }
 
-        if (this.deltaAbsX() >= this.deltaAbsY() && this.deltaAbsX() >= this.deltaAbsZ()) {
+        if (this.deltaAbsX() >= this.deltaAbsY() && this.deltaAbsX() >= this.deltaAbsZ()){
             if (this.deltaX() < 0) {
                 this.facing = Phaser.Plugin.Isometric.BACKWARDX;
             } else if (this.deltaX() > 0) {
                 this.facing = Phaser.Plugin.Isometric.FORWARDX;
             }
-        } else if (this.deltaAbsY() >= this.deltaAbsX() && this.deltaAbsY() >= this.deltaAbsZ()) {
+        } else if (this.deltaAbsY() >= this.deltaAbsX() && this.deltaAbsY() >= this.deltaAbsZ()){
             if (this.deltaY() < 0) {
                 this.facing = Phaser.Plugin.Isometric.BACKWARDY;
             } else if (this.deltaY() > 0) {
@@ -2669,7 +2672,7 @@ Phaser.Plugin.Isometric.Body.prototype = {
      * @param {number} height - The height of the Body.
      * @param {number} [offsetX] - The X offset of the Body from the Sprite position.
      * @param {number} [offsetY] - The Y offset of the Body from the Sprite position.
-     * @param {number} [offsetY] - The Z offset of the Body from the Sprite position.
+     * @param {number} [offsetZ] - The Z offset of the Body from the Sprite position.
      */
     setSize: function (widthX, widthY, height, offsetX, offsetY, offsetZ) {
 
@@ -3557,7 +3560,7 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
                     this.collideSpriteVsGroup(object1, object2, collideCallback, processCallback, callbackContext, overlapOnly);
                 }
             }
-            //  GROUPS
+                //  GROUPS
             else if (object1.type === Phaser.GROUP) {
                 if (object2.type === Phaser.Plugin.Isometric.ISOSPRITE) {
                     this.collideSpriteVsGroup(object2, object1, collideCallback, processCallback, callbackContext, overlapOnly);
@@ -4152,20 +4155,20 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
     },
 
     /**
-     * Find the distance between a display object (like a Sprite) and a Pointer. If no Pointer is given the Input.activePointer is used.
-     * The calculation is made from the display objects x/y coordinate. This may be the top-left if its anchor hasn't been changed.
-     * If you need to calculate from the center of a display object instead use the method distanceBetweenCenters()
-     * The distance to the Pointer is returned in isometric distance.
-     *
-     * @method Phaser.Physics.Arcade#distanceToPointer
-     * @param {any} displayObjectBody - The Display Object to test from.
-     * @param {Phaser.Pointer} [pointer] - The Phaser.Pointer to test to. If none is given then Input.activePointer is used.
-     * @return {number} The distance between the object and the Pointer.
-     */
+    * Find the distance between a display object (like a Sprite) and a Pointer. If no Pointer is given the Input.activePointer is used.
+    * The calculation is made from the display objects x/y coordinate. This may be the top-left if its anchor hasn't been changed.
+    * If you need to calculate from the center of a display object instead use the method distanceBetweenCenters()
+    * The distance to the Pointer is returned in isometric distance.
+    *
+    * @method Phaser.Physics.Arcade#distanceToPointer
+    * @param {any} displayObjectBody - The Display Object to test from.
+    * @param {Phaser.Pointer} [pointer] - The Phaser.Pointer to test to. If none is given then Input.activePointer is used.
+    * @return {number} The distance between the object and the Pointer.
+    */
     distanceToPointer: function (displayObjectBody, pointer) {
 
         pointer = pointer || this.game.input.activePointer;
-        var isoPointer = this.game.iso.unproject(pointer.position, undefined, displayObjectBody.z);
+        var isoPointer = this.game.iso.unproject(pointer.position,undefined,displayObjectBody.z);
         isoPointer.z = displayObjectBody.z;
         var a = this.anglesToXYZ(displayObjectBody, isoPointer.x, isoPointer.y, isoPointer.z);
 
@@ -4188,9 +4191,9 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
         // Spherical polar coordinates
         var r = this.distanceToXYZ(displayObjectBody, x, y, z);
         var theta = Math.atan2(y - displayObjectBody.y, x - displayObjectBody.x);
-        var phi = Math.acos((z - displayObjectBody.z) / r);
+        var phi   = Math.acos((z - displayObjectBody.z)/ r);
 
-        return {r: r, theta: theta, phi: phi};
+        return {r:r,theta:theta,phi:phi};
 
     },
 
@@ -4203,10 +4206,10 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
      * @param {Phaser.Pointer} [pointer] - The Phaser.Pointer to test to. If none is given then Input.activePointer is used.
      * @return {number} The (isometric) angle in radians between displayObjectBody.x/y to Pointer.x/y.
      */
-    angleToPointer: function (displayObjectBody, pointer) {
+    angleToPointer: function(displayObjectBody, pointer) {
 
         pointer = pointer || this.game.input.activePointer;
-        var isoPointer = this.game.iso.unproject(pointer.position, undefined, displayObjectBody.z);
+        var isoPointer = this.game.iso.unproject(pointer.position,undefined,displayObjectBody.z);
         isoPointer.z = displayObjectBody.z;
         var a = this.anglesToXYZ(displayObjectBody, isoPointer.x, isoPointer.y, isoPointer.z);
 
@@ -4215,70 +4218,58 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
     },
 
     /**
-     * Given the angle (in degrees) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
-     * One way to use this is: velocityFromAngle(angle, 200, sprite.velocity) which will set the values directly to the sprites velocity and not create a new Point object.
-     *
-     * @method Phaser.Physics.Arcade#velocityFromAngle
-     * @param {number} theta - The angle in radians for x,y in the isometric co-ordinate system
-     * @param {number} [phi=Math.PI/2] - The angle in radians for z in the isometric co-ordinate system
-     * @param {number} [speed=60] - The speed it will move, in pixels per second sq.
-     * @param {Phaser.Point|object} [point] - The Point object in which the x and y properties will be set to the calculated velocity.
-     * @return {Phaser.Plugin.Isometric.Point3} - A Point where point.x contains the velocity x value and so on for y and z.
-     */
+    * Given the angle (in degrees) and speed calculate the velocity and return it as a Point object, or set it to the given point object.
+    * One way to use this is: velocityFromAngle(angle, 200, sprite.velocity) which will set the values directly to the sprites velocity and not create a new Point object.
+    *
+    * @method Phaser.Physics.Arcade#velocityFromAngle
+    * @param {number} theta - The angle in radians for x,y in the isometric co-ordinate system
+    * @param {number} [phi=Math.PI/2] - The angle in radians for z in the isometric co-ordinate system
+    * @param {number} [speed=60] - The speed it will move, in pixels per second sq.
+    * @param {Phaser.Point|object} [point] - The Point object in which the x and y properties will be set to the calculated velocity.
+    * @return {Phaser.Plugin.Isometric.Point3} - A Point where point.x contains the velocity x value and so on for y and z.
+    */
     velocityFromAngles: function (theta, phi, speed, point) {
 
-        if (phi === undefined) {
-            phi = Math.sin(Math.PI / 2);
-        }
-        if (speed === undefined) {
-            speed = 60;
-        }
+        if (phi === undefined) { phi = Math.sin(Math.PI/2); }
+        if (speed === undefined) { speed = 60; }
         point = point || new Phaser.Point();
 
         return new Phaser.Plugin.Isometric.Point3(
             Math.cos(theta) * Math.sin(phi) * speed,
             Math.sin(theta) * Math.sin(phi) * speed,
-            Math.cos(phi) * speed
-        );
+                              Math.cos(phi) * speed
+            );
 
     },
 
     /**
-     * Sets the acceleration.x/y property on the display object so it will move towards the x/y coordinates at the given speed (in pixels per second sq.)
-     * You must give a maximum speed value, beyond which the display object won't go any faster.
-     * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
-     * Note: The display object doesn't stop moving once it reaches the destination coordinates.
-     *
-     * @method Phaser.Physics.Isometric.Arcade#accelerateToXYZ
-     * @param {any} displayObject - The display object to move.
-     * @param {number} x - The x coordinate to accelerate towards.
-     * @param {number} y - The y coordinate to accelerate towards.
-     * @param {number} z - The z coordinate to accelerate towards.
-     * @param {number} [speed=60] - The speed it will accelerate in pixels per second.
-     * @param {number} [xSpeedMax=500] - The maximum x velocity the display object can reach.
-     * @param {number} [ySpeedMax=500] - The maximum y velocity the display object can reach.
-     * @param {number} [zSpeedMax=500] - The maximum z velocity the display object can reach.
-     * @return {number} The angle (in radians).
-     */
-    accelerateToXYZ: function (displayObject, x, y, z, speed, xSpeedMax, ySpeedMax, zSpeedMax) {
+    * Sets the acceleration.x/y property on the display object so it will move towards the x/y coordinates at the given speed (in pixels per second sq.)
+    * You must give a maximum speed value, beyond which the display object won't go any faster.
+    * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
+    * Note: The display object doesn't stop moving once it reaches the destination coordinates.
+    *
+    * @method Phaser.Physics.Isometric.Arcade#accelerateToXYZ
+    * @param {any} displayObject - The display object to move.
+    * @param {number} x - The x coordinate to accelerate towards.
+    * @param {number} y - The y coordinate to accelerate towards.
+    * @param {number} z - The z coordinate to accelerate towards.
+    * @param {number} [speed=60] - The speed it will accelerate in pixels per second.
+    * @param {number} [xSpeedMax=500] - The maximum x velocity the display object can reach.
+    * @param {number} [ySpeedMax=500] - The maximum y velocity the display object can reach.
+    * @param {number} [zSpeedMax=500] - The maximum z velocity the display object can reach.
+    * @return {number} The angle (in radians).
+    */
+    accelerateToXYZ: function(displayObject, x, y, z, speed, xSpeedMax, ySpeedMax, zSpeedMax) {
 
-        if (speed === undefined) {
-            speed = 60;
-        }
-        if (xSpeedMax === undefined) {
-            xSpeedMax = 500;
-        }
-        if (ySpeedMax === undefined) {
-            ySpeedMax = 500;
-        }
-        if (zSpeedMax === undefined) {
-            zSpeedMax = 500;
-        }
+        if (speed === undefined) { speed = 60; }
+        if (xSpeedMax === undefined) { xSpeedMax = 500; }
+        if (ySpeedMax === undefined) { ySpeedMax = 500; }
+        if (zSpeedMax === undefined) { zSpeedMax = 500; }
 
-        var a = this.anglesToXYZ(displayObject.body, x, y, z);
-        var v = this.velocityFromAngles(a.theta, a.phi, speed);
+        var a = this.anglesToXYZ(displayObject.body, x, y,z);
+        var v = this.velocityFromAngles(a.theta,a.phi,speed);
 
-        displayObject.body.acceleration.setTo(v.x, v.y, v.z);
+        displayObject.body.acceleration.setTo(v.x,v.y,v.z);
         displayObject.body.maxVelocity.setTo(xSpeedMax, ySpeedMax, zSpeedMax);
 
         return a.theta;
@@ -4301,8 +4292,8 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
      * @param {number} [speed=60] - The speed it will move, in pixels per second (default is 60 pixels/sec)
      * @param {number} [maxTime=0] - Time given in milliseconds (1000 = 1 sec). If set the speed is adjusted so the object will arrive at destination in the given number of ms.
      * @return {number} The angle (in radians).
-     */
-    moveToXYZ: function (displayObject, x, y, z, speed, maxTime) {
+    */
+    moveToXYZ: function(displayObject, x, y, z, speed, maxTime) {
 
         if (typeof speed === 'undefined') {
             speed = 60;
@@ -4313,10 +4304,10 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
 
         if (maxTime > 0) {
             //  We know how many pixels we need to move, but how fast?
-            speed = this.distanceToXYZ(displayObject.body, x, y, z) / (maxTime / 1000);
+            speed = this.distanceToXYZ(displayObject.body, x, y ,z) / (maxTime / 1000);
         }
-        var a = this.anglesToXYZ(displayObject.body, x, y, z);
-        var v = this.velocityFromAngles(a.theta, a.phi, speed);
+        var a = this.anglesToXYZ(displayObject.body, x, y,z);
+        var v = this.velocityFromAngles(a.theta,a.phi,speed);
 
         displayObject.body.velocity.copyFrom(v);
 
@@ -4325,20 +4316,20 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
     },
 
     /**
-     * Move the given display object towards the destination object at a steady velocity.
-     * If you specify a maxTime then it will adjust the speed (overwriting what you set) so it arrives at the destination in that number of seconds.
-     * Timings are approximate due to the way browser timers work. Allow for a variance of +- 50ms.
-     * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
-     * Note: The display object doesn't stop moving once it reaches the destination coordinates.
-     * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
-     *
-     * @method Phaser.Physics.Isometric.Arcade#moveToObject
-     * @param {any} displayObject - The display object to move.
-     * @param {any} destination - The display object to move towards. Can be any object but must have visible x/y/z properties.
-     * @param {number} [speed=60] - The speed it will move, in pixels per second (default is 60 pixels/sec)
-     * @param {number} [maxTime=0] - Time given in milliseconds (1000 = 1 sec). If set the speed is adjusted so the object will arrive at destination in the given number of ms.
-     * @return {number} The angle (in radians).
-     */
+    * Move the given display object towards the destination object at a steady velocity.
+    * If you specify a maxTime then it will adjust the speed (overwriting what you set) so it arrives at the destination in that number of seconds.
+    * Timings are approximate due to the way browser timers work. Allow for a variance of +- 50ms.
+    * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
+    * Note: The display object doesn't stop moving once it reaches the destination coordinates.
+    * Note: Doesn't take into account acceleration, maxVelocity or drag (if you've set drag or acceleration too high this object may not move at all)
+    *
+    * @method Phaser.Physics.Isometric.Arcade#moveToObject
+    * @param {any} displayObject - The display object to move.
+    * @param {any} destination - The display object to move towards. Can be any object but must have visible x/y/z properties.
+    * @param {number} [speed=60] - The speed it will move, in pixels per second (default is 60 pixels/sec)
+    * @param {number} [maxTime=0] - Time given in milliseconds (1000 = 1 sec). If set the speed is adjusted so the object will arrive at destination in the given number of ms.
+    * @return {number} The angle (in radians).
+    */
     moveToObject: function (displayObject, destination, speed, maxTime) {
 
         return this.moveToXYZ(displayObject, destination.x, destination.y, destination.z, speed, maxTime);
@@ -4346,23 +4337,23 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
     },
 
     /**
-     * Move the given display object towards the pointer at a steady x & y velocity. If no pointer is given it will use Phaser.Input.activePointer.
-     * If you specify a maxTime then it will adjust the speed (over-writing what you set) so it arrives at the destination in that number of seconds.
-     * Timings are approximate due to the way browser timers work. Allow for a variance of +- 50ms.
-     * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
-     * Note: The display object doesn't stop moving once it reaches the destination coordinates.
-     *
-     * @method Phaser.Physics.Isometric.Arcade#moveToPointer
-     * @param {any} displayObject - The display object to move.
-     * @param {number} [speed=60] - The speed it will move, in pixels per second (default is 60 pixels/sec)
-     * @param {Phaser.Pointer} [pointer] - The pointer to move towards. Defaults to Phaser.Input.activePointer.
-     * @param {number} [maxTime=0] - Time given in milliseconds (1000 = 1 sec). If set the speed is adjusted so the object will arrive at destination in the given number of ms.
-     * @return {number} The angle (in radians).
-     */
-    moveToPointer: function (displayObject, speed, pointer, maxTime) {
+    * Move the given display object towards the pointer at a steady x & y velocity. If no pointer is given it will use Phaser.Input.activePointer.
+    * If you specify a maxTime then it will adjust the speed (over-writing what you set) so it arrives at the destination in that number of seconds.
+    * Timings are approximate due to the way browser timers work. Allow for a variance of +- 50ms.
+    * Note: The display object does not continuously track the target. If the target changes location during transit the display object will not modify its course.
+    * Note: The display object doesn't stop moving once it reaches the destination coordinates.
+    *
+    * @method Phaser.Physics.Isometric.Arcade#moveToPointer
+    * @param {any} displayObject - The display object to move.
+    * @param {number} [speed=60] - The speed it will move, in pixels per second (default is 60 pixels/sec)
+    * @param {Phaser.Pointer} [pointer] - The pointer to move towards. Defaults to Phaser.Input.activePointer.
+    * @param {number} [maxTime=0] - Time given in milliseconds (1000 = 1 sec). If set the speed is adjusted so the object will arrive at destination in the given number of ms.
+    * @return {number} The angle (in radians).
+    */
+    moveToPointer: function(displayObject, speed, pointer, maxTime) {
 
         pointer = pointer || this.game.input.activePointer;
-        var isoPointer = this.game.iso.unproject(pointer.position, undefined, displayObject.body.z);
+        var isoPointer = this.game.iso.unproject(pointer.position,undefined,displayObject.body.z);
         isoPointer.z = displayObject.body.z;
 
         if (typeof speed === 'undefined') {
@@ -4374,13 +4365,13 @@ Phaser.Plugin.Isometric.Arcade.prototype = {
 
         if (maxTime > 0) {
             //  We know how many pixels we need to move, but how fast?
-            speed = this.distanceToXYZ(displayObject.body, isoPointer.x, isoPointer.y, isoPointer.z) / (maxTime / 1000);
+            speed = this.distanceToXYZ(displayObject.body, isoPointer.x, isoPointer.y ,isoPointer.z) / (maxTime / 1000);
         }
-        var a = this.anglesToXYZ(displayObject.body, isoPointer.x, isoPointer.y, isoPointer.z);
-        var v = this.velocityFromAngles(a.theta, a.phi, speed);
+        var a = this.anglesToXYZ(displayObject.body, isoPointer.x, isoPointer.y,isoPointer.z);
+        var v = this.velocityFromAngles(a.theta,a.phi,speed);
 
-        displayObject.body.velocity.x = v.x;
-        displayObject.body.velocity.y = v.y;
+        displayObject.body.velocity.x=v.x;
+        displayObject.body.velocity.y=v.y;
 
         return a.theta;
     }
@@ -4444,3 +4435,5 @@ Phaser.Physics.prototype.destroy = (function (_super) {
     };
 
 })(Phaser.Physics.prototype.destroy);
+
+//# sourceMappingURL=phaser-plugin-isometric.js.map
